@@ -12,6 +12,7 @@ defmodule Soundcloud.Mixfile do
       start_permanent: Mix.env() == :prod,
       build_permanent: Mix.env() == :prod,
       deps: deps(),
+      docs: docs(),
       package: package()
     ]
   end
@@ -28,8 +29,13 @@ defmodule Soundcloud.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 1.0"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false}
     ]
+  end
+
+  def docs do
+    [main: Soundcloud, extras: ["README.md"]]
   end
 
   defp package do
@@ -37,7 +43,10 @@ defmodule Soundcloud.Mixfile do
       files: ["lib", "mix.exs", "README", "LICENSE"],
       maintainers: ["Adolfo Silva"],
       licenses: ["MIT"],
-      links: %{"Github" => "https://github.com/adolfosilva/soundcloud"}
+      links: %{
+        "Github" => "https://github.com/adolfosilva/soundcloud",
+        "Documentation" => "http://hexdocs.pm/soundcloud/"
+      }
     ]
   end
 end
