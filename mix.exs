@@ -30,7 +30,8 @@ defmodule Soundcloud.Mixfile do
     [
       {:httpoison, "~> 1.0"},
       {:poison, "~> 3.1"},
-      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.18.0", only: :dev, runtime: false},
+      {:quixir, "~> 0.9", only: :test}
     ]
   end
 
