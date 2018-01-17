@@ -50,7 +50,7 @@ defmodule Soundcloud.Request do
     ]
 
     headers = [
-      {"User-Agent", "SoundCloud Elixir API Wrapper 0.0.1"},
+      {"User-Agent", "SoundCloud Elixir API Wrapper #{Soundcloud.version()}"},
       {"Accept", "application/json"}
     ]
 

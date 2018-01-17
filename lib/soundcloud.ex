@@ -5,6 +5,7 @@ defmodule Soundcloud do
 
   alias Soundcloud.Client
 
+  @version Mix.Project.config[:version]
   @use_ssl true
   @host "api.soundcloud.com"
 
@@ -154,4 +155,6 @@ defmodule Soundcloud do
   defp options_present(opts, options) do
     Enum.all?(opts, fn k -> k in options end)
   end
+
+  def version, do: @version
 end
