@@ -60,14 +60,6 @@ defmodule Soundcloud.HashConversions do
     {Map.put(params, key, value), stack}
   end
 
-  defp normalize_pair(key, value) when is_binary(value) do
-    normalize_pair(key, String.codepoints(value))
-  end
-
-  defp normalize_pair(key, value) when is_map(value) do
-    normalize_pair(key, Map.keys(value))
-  end
-
   defp normalize_pair(key, value) do
     Enum.map(value, &normalize_param("#{key}[]", &1))
   end
