@@ -1,12 +1,12 @@
 defmodule SoundcloudTest.HashConversionsTest do
   use ExUnit.Case
   use Quixir
+  import Soundcloud.HashConversions
+
   doctest Soundcloud.HashConversions
 
-  import Soundcloud.HashConversions, only: [normalize_param: 2]
-
   test "normalize_param pair of strings" do
-    ptest key: string, value: string do
+    ptest key: string(), value: string() do
       assert normalize_param(key, value) == %{key => value}
     end
   end
