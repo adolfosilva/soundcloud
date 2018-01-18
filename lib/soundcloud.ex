@@ -5,7 +5,7 @@ defmodule Soundcloud do
 
   alias Soundcloud.Client
 
-  @version Mix.Project.config[:version]
+  @version Mix.Project.config()[:version]
   @use_ssl true
   @host "api.soundcloud.com"
 
