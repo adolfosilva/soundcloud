@@ -40,7 +40,7 @@ defmodule Soundcloud.HashConversions do
   defp do_normalize_param(key, value, params \\ %{}, stack \\ [])
 
   defp do_normalize_param(key, value, params, stack) when is_list(value) do
-    normalized = normalize_pair(key, value)
+    normalized = Enum.map(value, &normalize_param("#{key}[]", &1))
     keys = Enum.flat_map(normalized, &Map.keys/1)
     lists = duplicates(keys, normalized)
 
@@ -58,10 +58,6 @@ defmodule Soundcloud.HashConversions do
 
   defp do_normalize_param(key, value, params, stack) do
     {Map.put(params, key, value), stack}
-  end
-
-  defp normalize_pair(key, value) do
-    Enum.map(value, &normalize_param("#{key}[]", &1))
   end
 
   defp duplicates(keys, normalized) do
