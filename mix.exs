@@ -6,7 +6,7 @@ defmodule Soundcloud.Mixfile do
       app: :soundcloud,
       version: "0.1.0",
       mame: "Soundcloud",
-      description: "A Soundcloud API wrapper.",
+      description: "Soundcloud API client for Elixir.",
       source_url: "https://github.com/adolfosilva/soundcloud",
       elixir: "~> 1.5",
       start_permanent: Mix.env() == :prod,
