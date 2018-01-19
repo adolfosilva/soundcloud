@@ -85,4 +85,45 @@ defmodule SoundcloudTest.HashConversionsTest do
 
     assert expected == result
   end
+
+  test "to_params empty map" do
+    assert(%{} == to_params(%{}))
+  end
+
+  test "to_params simple string pair" do
+    assert(%{"foo" => "bar"} == to_params(%{"foo" => "bar"}))
+  end
+
+  test "to_params empty list as value" do
+    assert(%{} == to_params(%{"foo" => []}))
+  end
+
+  test "to_params list of integers as value" do
+    result = to_params(%{"foo" => [1, 2]})
+    expected = %{"foo[]" => [1, 2]}
+    assert expected == result
+  end
+
+  test "to_params empty map as value" do
+    assert(%{} == to_params(%{"foo" => %{}}))
+  end
+
+  test "to_params map as value" do
+    result = to_params(%{"foo" => %{"bar" => false, "tar" => 1}})
+    expected = %{"foo[bar]" => false, "foo[tar]" => 1}
+    assert expected == result
+  end
+
+  test "to_params map with list value" do
+    result = to_params(%{"foo" => %{"bar" => false, "tar" => [1, 2]}})
+    expected = %{"foo[bar]" => false, "foo[tar][]" => [1, 2]}
+    assert expected == result
+  end
+
+  @tag :skip
+  test "to_params complex" do
+    result = to_params(%{"foo" => %{"bar" => %{"a" => 5}, "tar" => [1, 2]}})
+    expected = %{"foo[tar][]" => [1, 2]}
+    assert expected == result
+  end
 end
