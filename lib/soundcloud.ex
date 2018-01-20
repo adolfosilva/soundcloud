@@ -29,9 +29,9 @@ defmodule Soundcloud do
   defp extra_config(opts) do
     opts = Keyword.put_new(opts, :options, opts)
     use_ssl = Keyword.get(opts, :use_ssl, @use_ssl)
-    opts = Keyword.replace(opts, :use_ssl, use_ssl)
+    opts = Keyword.put(opts, :use_ssl, use_ssl)
     host = Keyword.get(opts, :host, @host)
-    opts = Keyword.replace(opts, :host, host)
+    opts = Keyword.put(opts, :host, host)
     scheme = if use_ssl, do: "https://", else: "http://"
     opts = Keyword.put_new(opts, :scheme, scheme)
 
