@@ -71,11 +71,11 @@ defmodule Soundcloud.Request do
       end
 
     # if redirects are disabled, don't raise for 301 / 302
-    # if resp.status_code in [301, 302] do
-    #  if allow_redirects, do: raise_for_status!(resp)
-    # else
-    #  raise_for_status!(resp)
-    # end
+    if resp.status_code in [301, 302] do
+      if allow_redirects, do: raise_for_status!(resp)
+    else
+      raise_for_status!(resp)
+    end
 
     resp
   end
