@@ -1,11 +1,19 @@
-# Soundcloud
+# Soundcloud [![Build Status](https://travis-ci.com/adolfosilva/soundcloud.svg?token=dAEFQZUJn1dYyRnXJ6Vs&branch=master)](https://travis-ci.com/adolfosilva/soundcloud)[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
 
-**TODO: Add description**
+A Soundcloud API wrapper written in Elixir.
+
+## Usage
+
+```elixir
+iex> {:ok, client} = Soundcloud.client(client_id: "foobartar", access_token: "72-27has7d2-7afajf92")
+iex> r = Soundcloud.Client.get(client, "/me")
+iex> r.username
+"Foo Bar"
+```
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `soundcloud` to your list of dependencies in `mix.exs`:
+Add `soundcloud` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
