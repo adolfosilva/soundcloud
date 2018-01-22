@@ -11,12 +11,12 @@ defmodule SoundcloudTest.RequestTest do
     assert result == expected
   end
 
-  @tag :skip
   test "remove_files_from_map" do
     m = %{
       "oauth_token" => "foo",
       "track" => %{"title" => "bar", "asset_data" => File.open("setup.py", [:read, :binary])}
     }
+
     result = Request.remove_files_from_map(m)
     expected = %{"track" => %{"title" => "bar"}, "oauth_token" => "foo"}
     assert result == expected

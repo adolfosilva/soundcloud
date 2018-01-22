@@ -110,7 +110,6 @@ defmodule Soundcloud.Request do
     end
   end
 
-  # TODO: implement
   @doc """
   Return the provided map with any file objects removed.
   """
@@ -122,9 +121,10 @@ defmodule Soundcloud.Request do
     Map.put_new(m, k, remove_files_from_map(v))
   end
 
-  defp filter_out_files(m, k, v) when is_pid(v) do
-    Map.merge(m, %{})
-  end
+  defp filter_out_files(m, k, {:ok, v}) when is_pid(v), do: m
+  defp filter_out_files(m, k, {:error, _}), do: m
+
+  defp filter_out_files(m, k, v), do: Map.put_new(m, k, v)
 
   # TODO: implement
   @doc """
