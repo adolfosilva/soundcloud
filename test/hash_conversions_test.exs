@@ -5,6 +5,7 @@ defmodule SoundcloudTest.HashConversionsTest do
 
   doctest Soundcloud.HashConversions
 
+  @tag :skip
   test "normalize_param pair of strings" do
     ptest key: string(), value: string() do
       assert normalize_param(key, value) == %{key => value}
