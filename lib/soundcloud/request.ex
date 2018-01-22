@@ -50,8 +50,7 @@ defmodule Soundcloud.Request do
     ]
 
     headers = [
-      {"User-Agent", "SoundCloud Elixir API Wrapper #{Soundcloud.version()}"},
-      {"Accept", "application/json"}
+      {"User-Agent", "SoundCloud Elixir API Wrapper #{Soundcloud.version()}"}
     ]
 
     params = HashConversions.to_params(params)
@@ -59,6 +58,7 @@ defmodule Soundcloud.Request do
 
     {:ok, resp} =
       if method == :get do
+        headers = headers ++ [{"Accept", "application/json"}]
         qs = URI.encode_query(data)
         url_qs = if String.contains?(url, "?"), do: "#{url}&#{qs}", else: "#{url}?#{qs}"
 
