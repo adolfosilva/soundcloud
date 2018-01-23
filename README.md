@@ -1,4 +1,4 @@
-# Soundcloud [![Build Status](https://travis-ci.com/adolfosilva/soundcloud.svg?token=dAEFQZUJn1dYyRnXJ6Vs&branch=master)](https://travis-ci.com/adolfosilva/soundcloud)[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
+# Soundcloud [![Build Status](https://travis-ci.com/adolfosilva/soundcloud.svg?token=dAEFQZUJn1dYyRnXJ6Vs&branch=master)](https://travis-ci.com/adolfosilva/soundcloud) [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
 
 A Soundcloud API wrapper written in Elixir.
 
@@ -6,9 +6,11 @@ A Soundcloud API wrapper written in Elixir.
 
 ```elixir
 iex> {:ok, client} = Soundcloud.client(client_id: "foobartar", access_token: "72-27has7d2-7afajf92")
-iex> r = Soundcloud.Client.get(client, "/me")
-iex> r.username
-"Foo Bar"
+iex> r = Soundcloud.Client.get(client, "/me/tracks", limit: 1)
+iex> length(r)
+1
+iex> List.first(r).title
+"Be my Love"
 ```
 
 ## Installation
