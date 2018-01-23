@@ -9,19 +9,22 @@ defmodule Soundcloud do
   @use_ssl true
   @host "api.soundcloud.com"
 
+  @doc """
+  Returns a new Client process.
+  """
   def client(opts \\ []) do
-    opts =
-      if opts == [] do
-        default_config()
-      else
-        Keyword.merge(default_config(), opts)
-      end
-
-    opts
+    if opts == [] do
+      default_config()
+    else
+      Keyword.merge(default_config(), opts)
+    end
     |> extra_config()
     |> Client.start_link()
   end
 
+  @doc """
+  Returns the default configuration for the client.
+  """
   def default_config() do
     [use_ssl: @use_ssl, host: @host]
   end
@@ -122,6 +125,9 @@ defmodule Soundcloud do
     |> Map.put(:access_token, token.access_token)
   end
 
+  @doc """
+  Return the OAuth 2.0 authentication token provisioning endpoint.
+  """
   def auth_token_url(opts) do
     scheme = Keyword.get(opts, :scheme)
     host = Keyword.get(opts, :host)
@@ -129,26 +135,26 @@ defmodule Soundcloud do
   end
 
   defp redirect_uri(opts) do
-    opts = Keyword.get(opts, :options)
+    opts = Keyword.get(opts, :options, [])
     Keyword.get(opts, :redirect_uri, Keyword.get(opts, :redirect_url))
   end
 
   defp options_for_authorization_code_flow_present(opts) do
     required = ["client_id", "redirect_uri"]
     or_required = ["client_id", "redirect_url"]
-    opts = Keyword.get(opts, :options)
+    opts = Keyword.get(opts, :options, [])
     options_present(required, opts) or options_present(or_required, opts)
   end
 
   defp options_for_credentials_flow_present(opts) do
     required = ["client_id", "client_secret", "username", "password"]
-    opts = Keyword.get(opts, :options)
+    opts = Keyword.get(opts, :options, [])
     options_present(required, opts)
   end
 
   defp options_for_token_refresh_present(opts) do
     required = ["client_id", "client_secret", "refresh_token"]
-    opts = Keyword.get(opts, :options)
+    opts = Keyword.get(opts, :options, [])
     options_present(required, opts)
   end
 
@@ -156,5 +162,8 @@ defmodule Soundcloud do
     Enum.all?(opts, fn k -> k in options end)
   end
 
+  @doc """
+  Returns the project's version.
+  """
   def version, do: @version
 end

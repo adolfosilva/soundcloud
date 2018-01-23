@@ -1,6 +1,15 @@
 defmodule Soundcloud.HashConversions do
   import Soundcloud.Utils, only: [list_of_maps_to_map: 1, list_of_maps_to_map: 2]
 
+  @doc """
+  Returns a map with every key-value pair in `map` mapped with `normalize_param`.
+
+  ## Examples
+
+      iex> Soundcloud.HashConversions.to_params(%{"foo" => %{"bar" => %{"a" => 5}, "tar" => [1, 2]}}))
+      %{"foo[tar][]" => [1, 2]}
+
+  """
   @spec to_params(%{}) :: %{}
   def to_params(map) do
     normalized = for {k, v} <- map, do: normalize_param(k, v)
@@ -12,13 +21,13 @@ defmodule Soundcloud.HashConversions do
   into requests. This will convert lists into the syntax required by SoundCloud.
   Heavily lifeted from HTTParty.
 
-  # Examples
+  ## Examples
 
-    iex> Soundcloud.HashConversions.normalize_param("oauth_token", "foo")
-    %{"oauth_token" => "foo"}
-    
-    iex> Soundcloud.HashConversions.normalize_param("playlist[tracks]", [1234, 4567])
-    %{"playlist[tracks][]" => [1234, 4567]}
+      iex> Soundcloud.HashConversions.normalize_param("oauth_token", "foo")
+      %{"oauth_token" => "foo"}
+
+      iex> Soundcloud.HashConversions.normalize_param("playlist[tracks]", [1234, 4567])
+      %{"playlist[tracks][]" => [1234, 4567]}
 
   """
   def normalize_param(key, value) do

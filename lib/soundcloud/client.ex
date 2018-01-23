@@ -55,6 +55,9 @@ defmodule Soundcloud.Client do
     GenServer.call(client, {:delete, path, params})
   end
 
+  @doc """
+  Returns the process's configuration.
+  """
   def config(client) do
     GenServer.call(client, :config)
   end

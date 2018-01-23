@@ -10,10 +10,8 @@ defmodule Soundcloud.Utils do
 
   ## Examples
 
-
-    iex> Soundcloud.Utils.list_of_maps_to_map([%{"a" => 5}, %{"b" => 10}])
-    %{"a" => 5, "b" => 10}
-
+      iex> Soundcloud.Utils.list_of_maps_to_map([%{"a" => 5}, %{"b" => 10}])
+      %{"a" => 5, "b" => 10}
 
   """
   @spec list_of_maps_to_map(list(map), map) :: map
@@ -26,10 +24,8 @@ defmodule Soundcloud.Utils do
 
   ## Examples
 
-
-    iex> Soundcloud.Utils.map_string_keys_to_atoms(%{"foo" => 5, "bar" => %{"tar" => 10}})
-    %{foo: 5, bar: %{tar: 10}}
-
+      iex> Soundcloud.Utils.map_string_keys_to_atoms(%{"foo" => 5, "bar" => %{"tar" => 10}})
+      %{foo: 5, bar: %{tar: 10}}
 
   """
   @spec map_string_keys_to_atoms(%{optional(binary()) => any()}) :: map
