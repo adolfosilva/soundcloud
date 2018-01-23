@@ -5,6 +5,7 @@ defmodule SoundcloudTest.UtilsTest do
 
   doctest Soundcloud.Utils
 
+  @tag :skip
   test "accumulated size of each map inside list is equal to size of resulting map" do
     ptest list_of_maps: list(map()) do
       result = list_of_maps_to_map(list_of_maps)
