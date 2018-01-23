@@ -1,6 +1,7 @@
 defmodule Soundcloud.Request do
   require Logger
   alias Soundcloud.HashConversions
+  alias Soundcloud.Utils
 
   def get(path, config, params \\ []), do: request(:get, path, config, params)
 
@@ -34,7 +35,20 @@ defmodule Soundcloud.Request do
           params
         end
 
-      make_request(method, resolve_resource_name(path, config), params)
+      r = make_request(method, resolve_resource_name(path, config), params)
+
+      case Poison.decode(r.body) do
+        {:ok, body} ->
+          if is_list(body) do
+            Enum.map(body, &Utils.map_string_keys_to_atoms/1)
+          else
+            # convert keys of body from string to atoms
+            Utils.map_string_keys_to_atoms(body)
+          end
+
+        {:error, error} ->
+          raise "Can't decode response as JSON"
+      end
     end
   end
 
