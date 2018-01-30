@@ -26,7 +26,7 @@ defmodule Soundcloud do
   Returns the default configuration for the client.
   """
   def default_config() do
-    [use_ssl: @use_ssl, host: @host]
+    Application.get_env(:soundcloud, :auth) ++ [use_ssl: @use_ssl, host: @host]
   end
 
   defp extra_config(opts) do
