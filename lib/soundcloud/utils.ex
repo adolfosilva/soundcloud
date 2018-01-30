@@ -16,7 +16,7 @@ defmodule Soundcloud.Utils do
   """
   @spec list_of_maps_to_map(list(map), map) :: map
   def list_of_maps_to_map(list, acc \\ %{}) do
-    Enum.reduce(list, acc, &Map.merge(&2, &1))
+    Enum.reduce(list, acc, &Map.merge(&2, &1 || %{}))
   end
 
   @doc """
