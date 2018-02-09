@@ -1,4 +1,4 @@
-# Soundcloud [![Build Status](https://travis-ci.org/adolfosilva/soundcloud.svg?branch=master)](https://travis-ci.org/adolfosilva/soundcloud) [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
+# Soundcloud [![Build Status](https://travis-ci.org/adolfosilva/soundcloud.svg?branch=master)](https://travis-ci.org/adolfosilva/soundcloud) [![Hex Package](http://img.shields.io/hexpm/v/soundcloud.svg?style=flat)](https://hex.pm/packages/soundcloud) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 A Soundcloud API wrapper written in Elixir.
 
@@ -24,6 +24,10 @@ def deps do
   ]
 end
 ```
+
+## Documentation
+
+You can find the documentation at https://hexdocs.pm/soundcloud/
 
 ## License
 
