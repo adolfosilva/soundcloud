@@ -37,7 +37,12 @@ defmodule Soundcloud.Mixfile do
   end
 
   def docs do
-    [main: Soundcloud, extras: ["README.md"]]
+    [
+      main: Soundcloud,
+      source_url: "https://github.com/adolfosilva/soundcloud",
+      homepage_url: "https://github.com/adolfosilva/soundcloud",
+      extras: ["README.md"]
+    ]
   end
 
   defp package do
