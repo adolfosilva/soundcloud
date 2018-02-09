@@ -25,6 +25,16 @@ def deps do
 end
 ```
 
+Then configure your `config/dev.exs` (or whatever mix env you want to use), like this:
+
+```elixir
+config :soundcloud, :auth,
+    client_id: System.get_env("SOUNDCLOUD_CLIENT_ID"),
+    access_token: System.get_env("SOUNDCLOUD_ACCESS_TOKEN")
+```
+
+And don't forget to set the environment variables in your shell.
+
 ## Documentation
 
 You can find the documentation at https://hexdocs.pm/soundcloud/
