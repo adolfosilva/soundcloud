@@ -1,4 +1,4 @@
-# Soundcloud [![Build Status](https://travis-ci.com/adolfosilva/soundcloud.svg?token=dAEFQZUJn1dYyRnXJ6Vs&branch=master)](https://travis-ci.com/adolfosilva/soundcloud) [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
+# Soundcloud [![Build Status](https://travis-ci.org/adolfosilva/soundcloud.svg?branch=master)](https://travis-ci.org/adolfosilva/soundcloud) [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
 
 A Soundcloud API wrapper written in Elixir.
 
