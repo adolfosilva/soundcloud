@@ -47,7 +47,7 @@ defmodule Soundcloud.Mixfile do
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README", "LICENSE"],
+      files: ["lib", "mix.exs", "README.md", "LICENSE"],
       maintainers: ["Adolfo Silva"],
       licenses: ["MIT"],
       links: %{
