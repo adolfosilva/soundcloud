@@ -6,7 +6,7 @@ defmodule Soundcloud.HashConversions do
 
   ## Examples
 
-      iex> Soundcloud.HashConversions.to_params(%{"foo" => %{"bar" => %{"a" => 5}, "tar" => [1, 2]}}))
+      iex> Soundcloud.HashConversions.to_params(%{"foo" => %{"bar" => %{"a" => 5}, "tar" => [1, 2]}})
       %{"foo[tar][]" => [1, 2]}
 
   """
